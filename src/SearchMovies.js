@@ -18,17 +18,15 @@ function SearchMovies() {
 
         try {
             const res = await fetch(url);
-
             const data = await res.json();
-
-            setMovies(data.results)
-
+            data.results.length > 0 ? setMovies(data.results) : alert('No movies match your search')
+            
         } catch (err) {
             if (query.length < 1) {
                 alert('No movie name matches your search!', err)
             }
         }
-
+        setQuery('');
     }
 
 
